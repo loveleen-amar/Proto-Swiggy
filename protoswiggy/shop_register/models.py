@@ -10,7 +10,7 @@ class ShopApplications(models.Model):
     shope_phone = models.CharField(max_length=200)
     shop_email = models.EmailField()
     shop_gst = models.CharField(max_length=200)
-    application_date = models.DateField('Application Date')
+    application_date = models.DateTimeField('Application Date')
     shop_license_pdf = models.CharField(max_length=1000)
     shop_owner_id_proof = models.CharField(max_length=1000)
     shop_owner_photo = models.CharField(max_length=1000)

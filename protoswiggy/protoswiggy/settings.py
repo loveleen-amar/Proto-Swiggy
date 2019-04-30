@@ -124,3 +124,5 @@ STATIC_URL = '/static/'
 STATICDIRS = [
     'static/'
 ]
+
+TIME_ZONE =  'Asia/Kolkata'
