@@ -4,5 +4,11 @@
 {% block content %}
     <center>
         <h1>Shop Admin</h1>
+        <h1>List of Shops</h1>
+        <ol>
+        {% for q in list %}
+            <li><a href="{% url 'shopadmin:detail' shop_id=q.id %}">{{q.shop_name}}</a></li>
+        {% endfor %}
+        </ol>
     </center>
 {% endblock content %}

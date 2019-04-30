@@ -6,4 +6,5 @@ app_name = 'shopadmin'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('<int:shop_id>/',views.detail,name='detail'),
 ]
