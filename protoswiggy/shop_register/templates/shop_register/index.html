@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Shop Registration</title>
-</head>
-<body>
+{% extends 'base_docs/base.html' %}
+
+{% block title%} Shop Register {% endblock title%}
+{% block content %}
     <center>
-        <form action="#" method ="POST" enctype="multipart/form-data">
+        <form action="{% url 'shopregister:upload' %}" method ="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="text" name="shop_name" placeholder="Shop Name" required><br><br>
             <input type="text" name="shop_owner_name" placeholder="Shop's Owner Name" required><br><br>
+            <input type="text" name="shop_address" placeholder="Shop's Address" required><br><br>
             <input type="text" name="license_number" placeholder="Shop Licence Number" required><br><br>
             <input type="text" name="shop_phone" placeholder="Shop Phone Number" required><br><br>
             <input type="email" name="shop_email" placeholder="Shop E-Mail" required><br><br>
@@ -25,5 +21,5 @@
             <input type="submit" value="Submit" name="submit"><br>
         </form>
     </center>
-</body>
-</html>
+{% endblock content %}
+

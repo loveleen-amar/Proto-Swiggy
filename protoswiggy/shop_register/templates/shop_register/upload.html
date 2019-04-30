@@ -1,0 +1,19 @@
+{% extends 'base_docs/base.html' %}
+
+{% block title%} Shop Register {% endblock title%}
+{% block content %}
+    <center>
+        {% if error_message%}
+            <h1>{{error_message}}</h1>
+        {% else %}
+        <h1>Document Uploaded</h1>
+        <div><h2>Shop Name: <i>{{ info.shop_name }}</i></h2></div>
+        <div><h2>Shop's Owner Name': <i>{{ info.shop_owner_name }}</i></h2></div>
+        <div><h2>Shop's Address': <i>{{ info.shop_address }}</i></h2></div>
+        <div><h2>Shop License Number: <i>{{ info.license_number }}</i></h2></div>
+        <div><h2>Shop Phone: <i>{{ info.shope_phone }}</i></h2></div>
+        <div><h2>Shop Email: <i>{{ info.shop_email }}</i></h2></div>
+        <div><h2>Shop GST: <i>{{ info.shop_gst }}</i></h2></div>
+        {% endif %}
+    </center>
+{% endblock content %}
