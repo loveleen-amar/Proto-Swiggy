@@ -9,18 +9,19 @@
 <body>
     <center>
         <form action="#" method ="POST" enctype="multipart/form-data">
-            <input type="text" name="shop_name" placeholder="Shop Name" required><br>
-            <input type="text" name="shop_owner_name" placeholder="Shop's Owner Name" required><br>
-            <input type="text" name="license_number" placeholder="Shop Licence Number" required><br>
-            <input type="text" name="shop_phone" placeholder="Shop Phone Number" required><br>
-            <input type="email" name="shop_email" placeholder="Shop E-Mail" required><br>
-            <input type="text" name="shop_gst" placeholder="Shop GST Number" required><br>
+            {% csrf_token %}
+            <input type="text" name="shop_name" placeholder="Shop Name" required><br><br>
+            <input type="text" name="shop_owner_name" placeholder="Shop's Owner Name" required><br><br>
+            <input type="text" name="license_number" placeholder="Shop Licence Number" required><br><br>
+            <input type="text" name="shop_phone" placeholder="Shop Phone Number" required><br><br>
+            <input type="email" name="shop_email" placeholder="Shop E-Mail" required><br><br>
+            <input type="text" name="shop_gst" placeholder="Shop GST Number" required><br><br>
             Shop's Licence Document
-            <input type="file" name="shop_license_pdf" placeholder="Shop Licence Document" required><br>
+            <input type="file" name="shop_license_pdf" placeholder="Shop Licence Document" required><br><br>
             Shop Owner ID Proof
-            <input type="file" name="shop_owner_id_proof" placeholder="Shop Owner ID Proof" required><br>
+            <input type="file" name="shop_owner_id_proof" placeholder="Shop Owner ID Proof" required><br><br>
             Shop Owner Photo
-            <input type="file" name="shop_owner_photo" placeholder="Shop Owner Photo" required><br>
+            <input type="file" name="shop_owner_photo" placeholder="Shop Owner Photo" required><br><br>
             <input type="submit" value="Submit" name="submit"><br>
         </form>
     </center>
