@@ -1,0 +1,48 @@
+{% extends 'base_docs/base.html' %}
+
+{% block title%}Shop Admin{% endblock title%}
+
+{% block content %}
+	<div>
+		<h2>Products</h2>
+		<table class="table table-striped" border = "0">
+			<thead>
+				<tr>
+					<th>Product ID</th>
+					<th>Product Name</th>
+					<th>Product Photo</th>
+					<th>Shop Name</th>
+					<th>Category</th>
+					<th>Rate</th>
+					<th>Units</th>
+					<th>Quantity Available</th>
+					<th>Approved</th>
+					<th>Approve?</th>
+					<th>Delete?</th>
+				</tr>
+			</thead>
+			</tbody>
+				{% for product in products %}
+					<form action='{% url 'shopadmin:productsupdate' %}' method='POST'>
+					{% csrf_token %}
+					<tr>
+						<td>{{product.id}}</td>
+						<td>{{product.product_name}}</td>
+						<td><img src="{{product.product_photo.url}}" alt=""height='100px'></td>
+						<td>{{product.shop_name.shop_name}}</td>
+						<td>{{product.category.category_name}}</td>
+						<td>{{product.rate}}</td>
+						<td>{{product.units}}</td>
+						<td>{{product.quantity}}</td>
+						<td>{{product.product_approved}}</td>
+						<input type="hidden" value='{{product.id}}'name='product_id'>
+						<td><input type="submit" name='submit' class = "btn btn-primary" value="APPROVE"></td>
+						<td><input type="submit" name='submit' class = "btn btn-danger" value="DELETE"></td>
+					</tr>
+					</form>
+				{% endfor %}
+				</tbody>
+			</thead>
+		</table>
+	</div>
+{% endblock content %}

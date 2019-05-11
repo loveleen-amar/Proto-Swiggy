@@ -1,8 +1,27 @@
 {% extends 'base_docs/base.html' %}
-
-{% block title%} Protto-Swiggy {% endblock title%}
+{% load static %}
+{% block title%} Airlines {% endblock title%}
 {% block content %}
-    <center>
-        <h1>Yeah It's Working! </h1>
-    </center>
+
+<div class="jumbotron" style="background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('{% static 'home_page/aa.jpg' %}');color:white">
+  <h1>Welcome to Airlines Management System</h1>
+  <p>Manage Airlines Online
+  </p>
+  <p><a class="btn btn-primary btn-lg" href="{% url 'customerregister:index' %}" role="button">Sign In</a></p>
+</div>
+<div>
+{% if request.user.is_authenticated %}
+<h2><b>Search for Flights:</b></h2>
+<form class="form" action="{% url 'home:search' %}" method="POST">
+   {% csrf_token %}
+   Date
+   <input type="date" name="date" placeholder="Date">
+   Number of Passengers
+   <input type="number" name="passengers" placeholder="Number of Passengers">
+   Cost of Budget
+   <input type="text" name="cost_budget" placeholder="Cost">
+   <input type="submit" name="submit">
+</form>
+
+{% endif %}
 {% endblock content %}

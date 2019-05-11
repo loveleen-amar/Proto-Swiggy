@@ -1,14 +1,18 @@
 {% extends 'base_docs/base.html' %}
 
-{% block title%} Shop Admin {% endblock title%}
+{% block title%}Shop Admin{% endblock title%}
+
 {% block content %}
-    <center>
-        <h1>Shop Admin</h1>
-        <h1>List of Shops</h1>
-        <ol>
-        {% for q in list %}
-            <li><a href="{% url 'shopadmin:detail' shop_id=q.id %}">{{q.shop_name}}</a></li>
-        {% endfor %}
-        </ol>
-    </center>
+	<div>
+		<center class ="row">
+			<div class="col-lg-4"></div>
+			<div class = "list-group">
+				<a class="list-group-item list-group-item-info" href="{% url 'shopadmin:shopApplications' %}">Shop Applications</a>
+				<a class="list-group-item list-group-item-info" href="{% url 'shopadmin:shopRegistered' %}">Registered Shops</a>
+				<a class="list-group-item list-group-item-info" href="{% url 'shopadmin:allproducts' %}">Products</a>
+				<a class="list-group-item list-group-item-info" href="{% url 'shopadmin:categories' %}">Category Lists</a>
+			</div>
+			</div>
+		</center>
+	</div>
 {% endblock content %}

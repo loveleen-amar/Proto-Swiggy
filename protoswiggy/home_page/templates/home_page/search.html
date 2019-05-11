@@ -1,0 +1,25 @@
+{% extends 'base_docs/base.html' %}
+
+{% block title%} SARAL {% endblock title%}
+{% block content %}
+
+   <div class="row">
+   {% for product in products%}
+      <div class="col-lg-4" style="padding:30px;">
+            <a href="{% url 'product_management:index' product.id %}">
+                 <center>
+                    <br>
+                     <h3>{{product.product_name}}</h3>
+                     <br>
+                     Price:<b> {{product.rate}}</b>
+                     <br>
+                     Airline Name: <b>{{product.shop_name.shop_name}}</b>
+                     <br>
+                     Date: <b>{{product.product_date}}</b>
+                  </center>
+             </a>
+         </div>
+   {% endfor %}
+</div>
+ 
+{% endblock content %}

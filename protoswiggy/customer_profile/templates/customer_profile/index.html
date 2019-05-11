@@ -1,0 +1,101 @@
+{% extends 'base_docs/base.html' %}
+
+{% block title%}{{u.customer_name}}{% endblock title%}
+
+{% block content %}
+<div>
+    
+    <div><img class="img-thumbnail" src="{{ u.customer_photo.url }}" alt="user" style="height:200px"> 
+	<div><h2>Name: <i>{{ u.customer_name }}</i></h2></div>
+	<div><h2>Address: <i>{{ u.customer_address }}</i></h2></div>
+	<div><h2>Phone: <i>{{ u.customer_phone }}</i></h2></div>
+	<div><h2>Email: <i>{{ user.email }}</i></h2></div>
+	<br><br>
+	<hr>
+	<br><br>
+	<br><br>
+	<center>
+	<div>
+		<h2><b>Current Orders</b></h2>
+		<table class="table table-striped">
+			<thead>
+				<th>Order ID</th>
+				<th>Product Name</th>
+				<th>Quantity</th>
+				<th>Shop Name</th>
+				<th>Shop Address</th>
+				<th>Shop Owner Phone Number</th>
+				<th>Your Address</th>
+				<th>Order Date and Time</th>
+				<th>Total</th>
+				<th>Status</th>
+				<th>Cancel Item?</th>
+			</thead>
+			<tbody>
+				<tbody>
+				{% for order in orders  %}
+				{% if order.order_status == 'PENDING' or order.order_status == 'CONFIRMED'  %}
+				<tr>
+					<td>{{order.id}}</td>
+					<td>{{order.product.product_name}}</td>
+					<td>{{order.quantity}}</td>
+					
+					<td>{{order.product.shop_name.shop_name}}</td>
+					<td>{{order.product.shop_name.shop_address}}</td>
+					<td>{{order.product.shop_name.shope_phone}}</td>
+					<td>{{order.customer.customer_address}}</td>
+					<td>{{order.order_time}}</td>
+					<td>Rs.{{order.total_cost}}</td>
+					<td>{{order.order_status}}</td>
+					<td><a class="btn btn-danger" href = "{% url 'customerprofile:ordercancel' order.id %}">Cancel</a></td>
+				</tr>
+				{% endif %}
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	
+	<br><br><br>
+	<hr>
+	<br>
+	<br>
+	<div>
+		<h2><b>Previous Orders</b></h2>
+		<table class="table table-striped">
+			<thead>
+				<th>S.No.</th>
+				<th>Product Name</th>
+				<th>Quantity</th>
+				<th>Shop Name</th>
+				<th>Shop Address</th>
+				<th>Shop Owner Phone Number</th>
+				<th>Your Address</th>
+				<th>Order Date and Time</th>
+				<th>Total</th>
+				<th>Status</th>
+			</thead>
+			<tbody>
+				<tbody>
+				{% for order in orders  %}
+				{% if order.order_status == 'CANCELLED' or order.order_status == 'DELIVERED'  %}
+				<tr>
+					<td>{{order.id}}</td>
+					<td>{{order.product.product_name}}</td>
+					<td>{{order.quantity}}</td>
+					<td>{{order.product.shop_name.shop_name}}</td>
+					<td>{{order.product.shop_name.shop_address}}</td>
+					<td>{{order.product.shop_name.shope_phone}}</td>
+					<td>{{order.customer.customer_address}}</td>
+					<td>{{order.order_time}}</td>
+					<td>Rs.{{order.total_cost}}</td>
+					<td>{{order.order_status}}</td>
+				</tr>
+				{% endif %}
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	
+    </center>
+</div>
+{% endblock content %}

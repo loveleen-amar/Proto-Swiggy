@@ -1,0 +1,33 @@
+{% extends 'base_docs/base.html' %}
+
+{% block title%} Login {% endblock title%}
+
+{% block content %}
+<div class="rows">
+
+    <div class="col-lg-4" style="left: 50%;  transform:translate(-50%)">
+        <center><h3>LOGIN PORTAL</h3></center>
+    <form class = "form" action="{% url 'login_app:login_user' %}" method="post">
+        {% csrf_token %}
+        {% if error_message %} {{error_message}} {% endif %}
+        <div class = "form-group">
+            <label for="username">Username: </label>
+            <input type="text" class="form-control" id="username" name="username" >
+        </div>
+        
+        <div class = "form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" >
+        </div>
+        
+        <div class="form-group">
+            <center>
+            <input type="submit" class="btn btn-primary" name="submit" value="Login">
+            </center>
+        </div>
+        
+    </form>
+    </div>
+
+</div>
+{% endblock content %}

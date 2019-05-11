@@ -1,0 +1,84 @@
+{% extends 'base_docs/base.html' %}
+
+{% block title%}{{info.shop_name}}{% endblock title%}
+
+{% block content %}
+
+	<div><h2>Airline Name: <b><i>{{ info.shop_name }}</i></b></h2></div>
+	<div><img class = "img img-thumbnail" src="{{ info.shop_owner_photo.url }}" alt="Shop Owner" style="height:150px"> 
+	<h2>Airline Owner Name: <b><i>{{ info.shop_owner_name }}</i></b></h2></div>
+	<div><h2>Airlines Address: <b><i>{{ info.shop_address }}</i></b></h2></div>
+	<div><h2>Airlines Number: <b><i>{{ info.license_number }}</i></b></h2></div>
+	<div><h2>Airlines Phone: <b><i>{{ info.shope_phone }}</i></b></h2></div>
+	<div><h2>Airlines Email: <b><i>{{ info.user.email }}</i><b></h2></div>
+	<div><h2>Airlines: <b><i>{{ info.shop_gst }}</i></b></h2></div>
+	<div><h2>Airlines Launch Date: <b><i>{{ info.application_date }}</i></b></h2></div>
+	<div><h2>License : <b><i><a href=" {{ info.shop_license_pdf.url  }}">License</a></i></b></h2></div>
+	<div><h2>Owner ID Proof : <b><i><a href=" {{ info.shop_owner_id_proof.url  }}">ID Proof</a></i></b></h2></div>
+	<div><h2>Application Approval: <b><i>{{ info.shop_approved }}</i></b></h2></div>
+    <br><br>
+	<hr>
+	<br><br>
+	<br><br>
+	<center>
+	{% if info.shop_approved == "APPROVED" %}
+	<div>
+		<h2>Flights</h2>
+		<div class="table-responsive">
+		<table class="table table-striped" border = "0">
+			<thead>
+				<tr>
+					<th>Flight ID</th>
+					<th>Flight Name</th>
+					<th>Budget</th>
+					<th>Date</th>
+					<th>Status</th>
+					<th>Delay?</th>
+					<th>Cancel?</th>
+				</tr>
+			</thead>
+			</tbody>
+				{% for product in products %}
+					<form action='{% url 'shop_profile:productupdate' %}' method='POST' enctype="multipart/form-data">
+					{% csrf_token %}
+					<tr>
+						<td>{{product.id}}</td>
+						<td>{{product.product_name}}</td>
+						<td>{{product.rate}}</td>
+						<td>{{product.product_date}}</td>
+						<td>{{product.product_approved}}</td>
+						<input type="hidden" value='{{product.id}}'name='product_id'>
+						<td><input type="submit" class="btn btn-danger" name='submit' value="DELAY"></td>
+						<td><input type="submit" class="btn btn-danger" name='submit' value="DELETE"></td>
+					</tr>
+					</form>
+				{% endfor %}
+				
+				<form action='{% url 'shop_profile:productupdate' %}' method='POST'>
+				{% csrf_token %}
+				<tr>
+					<td></td>
+					<td><input type="text" value="" name="product_name" placeholder="Flight Name"></td>
+					<td><input type="text" name="product_rate" placeholder="Budget"></td>
+					<td><input type="date" name="date"></td>
+					<td><input type="submit" class="btn btn-info" name='submit' value="ADD"></td>
+				</tr>
+				</form>
+				</tbody>
+
+			</thead>
+		</table>
+	</div>
+	</div>
+	<br><br>
+	<hr>
+	<br><br>
+	<br><br>
+	
+	</div>
+	{% endif %}
+	<br>
+	<hr>
+	<br><br>
+	</center>
+{% endblock content %}

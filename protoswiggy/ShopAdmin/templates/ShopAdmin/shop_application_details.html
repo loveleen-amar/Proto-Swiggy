@@ -1,0 +1,22 @@
+{% extends 'base_docs/base.html' %}
+
+{% block title%}Shop Admin{% endblock title%}
+
+{% block content %}
+	<center>
+        <div><h2>Shop Name: <i>{{ info.shop_name }}</i></h2></div>
+        <div> <img src="{{ info.shop_owner_photo.url }}" alt="" height="100"> 
+        <h2>Shop's Owner Name: <i>{{ info.shop_owner_name }}</i></h2></div>
+        <div><h2>Shop's Address: <i>{{ info.shop_address }}</i></h2></div>
+        <div><h2>Shop License Number: <i>{{ info.license_number }}</i></h2></div>
+        <div><h2>Shop Phone: <i>{{ info.shope_phone }}</i></h2></div>
+        <div><h2>Shop Email: <i>{{ info.user.email }}</i></h2></div>
+        <div><h2>Shop GST: <i>{{ info.shop_gst }}</i></h2></div>
+        <div><h2>Application Date: <i>{{ info.application_date }}</i></h2></div>
+        <div><h2>License : <i><a href=" {{ info.shop_license_pdf.url  }}">License</a></i></h2></div>
+        <div><h2>Owner ID Proof : <i><a href=" {{ info.shop_owner_id_proof.url }}">ID Proof</a></i></h2></div>
+		<div><h2>Application Approval: <i>{{ info.shop_approved }}</i></h2></div>
+		<h3 ><a class="btn btn-primary" href="{% url 'shopadmin:shopApplicationsApprove' info.user.id %}">Approve</a></h3>
+        <h3><a class="btn btn-danger" href="{% url 'shopadmin:shopApplicationsDelete' info.user.id %}">Delete</a></h3>
+	</center>
+{% endblock content %}

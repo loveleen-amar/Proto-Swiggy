@@ -1,25 +1,80 @@
 {% extends 'base_docs/base.html' %}
 
-{% block title%} Shop Register {% endblock title%}
+{% block title%} Airline Panel {% endblock title%}
 {% block content %}
-    <center>
-        <form action="{% url 'shopregister:upload' %}" method ="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <input type="text" name="shop_name" placeholder="Shop Name" required><br><br>
-            <input type="text" name="shop_owner_name" placeholder="Shop's Owner Name" required><br><br>
-            <input type="text" name="shop_address" placeholder="Shop's Address" required><br><br>
-            <input type="text" name="license_number" placeholder="Shop Licence Number" required><br><br>
-            <input type="text" name="shop_phone" placeholder="Shop Phone Number" required><br><br>
-            <input type="email" name="shop_email" placeholder="Shop E-Mail" required><br><br>
-            <input type="text" name="shop_gst" placeholder="Shop GST Number" required><br><br>
-            Shop's Licence Document
-            <input type="file" name="shop_license_pdf" placeholder="Shop Licence Document" required><br><br>
-            Shop Owner ID Proof
-            <input type="file" name="shop_owner_id_proof" placeholder="Shop Owner ID Proof" required><br><br>
-            Shop Owner Photo
-            <input type="file" name="shop_owner_photo" placeholder="Shop Owner Photo" required><br><br>
-            <input type="submit" value="Submit" name="submit"><br>
-        </form>
-    </center>
+<div class="row">
+    <div class="col-lg-6">
+    <h2>Shop Registration</h2>
+    <form class="form" action="{% url 'shopregister:upload' %}" method ="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+          <div class="form-group">
+              <label for="shop_name">Airline Name</label>
+               <input type="text" class="form-control" name="shop_name" id="shop_name" placeholder="Shop Name" required>
+          </div>
+           
+           <div class="form-group">
+               <label for="shop_owner_name">Airline Owner Name</label>
+               <input type="text" class="form-control" name="shop_owner_name" id="shop_owner_name" placeholder="Shop's Owner Name" required>
+           </div>
+           
+        <div class="form-group">
+            <label for="shop_address">Airline Address </label>
+            <textarea type="text" class="form-control" name="shop_address" rows=5 id="shop_address" placeholder="Shop's Address" required></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="license_number">Airline License Number</label>
+            <input type="text" class="form-control" name="license_number" id="license_number" placeholder="Shop Licence Number" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="shop_phone">Airline Phone Number</label>
+            <input type="text" class="form-control" name="shop_phone" id="name="shop_phone"" placeholder="Shop Phone Number" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="shop_email">Airline E-Mail</label>
+            <input type="email" class="form-control" name="shop_email" id="shop_email" placeholder="Shop E-Mail" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="shop_gst">Flight Number</label>
+            <input type="text" class="form-control" name="shop_gst" id="shop_gst" placeholder="Shop GST Number" required>
+        </div>
+
+        <div class="form-group">
+            {% if error_message %}{{error_message}}<br>{% endif %}
+            <label for="shop_username">Username</label>
+            <input type="text" class="form-control" name="shop_username" id="shop_username" placeholder="username" required>
+        </div>
+
+        <div class="form-group">
+            <label for="shop_password">Password</label>
+            <input type="password" class="form-control" name="shop_password" id="shop_password" placeholder="Shop Password" required>
+        </div>
+        <div class="form-group">
+            <label for="shop_owner_photo">Airline Owner Photo</label>
+            <input type="file" class="form-control" name="shop_owner_photo" id="shop_owner_photo" placeholder="Shop Owner Photo" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="shop_license_pdf">Airline's Licence Document</label>
+            <input type="file" class="form-control" name="shop_license_pdf" id="shop_license_pdf" placeholder="Shop Licence Document" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="shop_owner_id_proof">Airline Owner ID Proof</label>
+            <input type="file" class="form-control" name="shop_owner_id_proof" id="shop_owner_id_proof" placeholder="Shop Owner ID Proof" required>
+        </div>
+      
+        <div class="form-group">
+        <center>
+            <input type="submit" value="Submit" name="submit">
+        </center>
+        </div>
+        
+    </form>
+    </div>
+</div>
 {% endblock content %}
 

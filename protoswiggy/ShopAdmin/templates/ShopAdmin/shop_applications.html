@@ -1,0 +1,35 @@
+{% extends 'base_docs/base.html' %}
+
+{% block title%}Shop Admin{% endblock title%}
+
+{% block content %}
+	<div>
+		<h2>Shop Applications</h2>
+		<table class="table table-striped" border="0">
+		
+			<thead>
+				<tr>
+					<th>Shop Id</th>
+					<th>Shop Name</th>
+					<th>Shop Owner Name</th>
+					<th>Shop Owner Phone Number</th>
+					<th>Application Time</th>
+					<th>Detail</th>
+				</tr>
+			</thead>
+			<tbody>
+            {% for shop in shops  %}
+				<tr>
+					<td>{{shop.user.id}} </td>
+					<td>{{shop.shop_name}}</td>
+					<td>{{shop.shop_owner_name}}</td>
+					<td>{{shop.shope_phone}}</td>
+					<td>{{shop.application_date}}</td>
+					<td><a class="btn btn-success" href="{% url 'shopadmin:shopApplicationsdetails' shop.user.id %}">Details</a></td>
+				</tr>
+			{% endfor %}    
+			</tbody>
+			
+		</table>
+	</div>
+{% endblock content %}

@@ -25,14 +25,19 @@ SECRET_KEY = '361u1vxe9vi2k%%x3d86@#!-_@n#9ez&fxl&z+m8$p2$zg0&7v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['172.16.101.30','','localhost','127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'product_management.apps.ProductManagementConfig',
+    'shop_profile.apps.ShopProfileConfig',
+    'customer_profile.apps.CustomerProfileConfig',
+    'shopadmin.apps.ShopadminConfig',
+    'login_app.apps.LoginAppConfig',
+    'customer_register.apps.CustomerRegisterConfig',
     'shop_register.apps.ShopRegisterConfig',
-    'ShopAdmin.apps.ShopadminConfig',
     'home_page.apps.HomePageConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -53,6 +58,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'protoswiggy.urls'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, '')
+MEDIA_URL = '/pictures/'
 
 TEMPLATES = [
     {
@@ -125,7 +133,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static/'),
     os.path.join(BASE_DIR, 'home_page/static/'),
     os.path.join(BASE_DIR, 'shop_register/static/'),
-    os.path.join(BASE_DIR, 'ShopAdmin/static/'),
 ]
 
 TIME_ZONE =  'Asia/Kolkata'

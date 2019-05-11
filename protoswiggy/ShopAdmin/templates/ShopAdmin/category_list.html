@@ -1,0 +1,73 @@
+{% extends 'base_docs/base.html' %}
+
+{% block title%}Shop Admin{% endblock title%}
+
+{% block content %}
+	<div>
+		<h2>Product Categories</h2>
+		<table class="table table-striped" border="0">
+		
+			<thead>
+				<tr>
+					<th>Category ID</th>
+					<th>Category Name</th>
+					<th>Delete?</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for a in categories %}
+		    	<tr>
+		    		<td>{{a.id}}</td>
+		    		<td>{{a.category_name}}</td>
+		    		<td>
+					<a class="btn btn-danger" href="{% url 'shopadmin:delete_categories' %}?delete={{a.id}}">DELETE</a>
+					</td>
+		    	</tr>
+				{% endfor %}
+
+			    <tr>
+					<form action="{% url 'shopadmin:add_categories' %}" method="POST">
+						{% csrf_token %}
+						<td></td>
+						<td><input type="text" placeholder="Category Name" name="category_name"></td>
+						<td><input type="submit" class="btn btn-primary" value="Add" name="submit" ></td>
+					</form>
+		    	</tr>
+			</tbody>
+			
+		</table>
+	</div>
+
+	<div>
+		<h2>Units</h2>
+		<table class="table table-striped" border="0">
+		
+			<thead>
+				<tr>
+					<th>Units</th>
+					<th>Delete?</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for a in units %}
+		    	<tr>
+		    		<td>{{a.units}}</td>
+		    		<td>
+					<a class="btn btn-danger" href="{% url 'shopadmin:delete_units' %}?delete={{a.id}}">DELETE</a>
+					</td>
+		    	</tr>
+				{% endfor %}
+
+			    <tr>
+					<form action="{% url 'shopadmin:add_units' %}" method="POST">
+						{% csrf_token %}
+						<td><input type="text" placeholder="New Unit" name="unit_name"></td>
+						<td><input type="submit" class="btn btn-primary" value="Add" name="submit" ></td>
+					</form>
+		    	</tr>
+			</tbody>
+			
+		</table>
+	</div>
+
+{% endblock content %}

@@ -1,0 +1,55 @@
+{% extends 'base_docs/base.html' %}
+
+{% block title%} Customer Registration {% endblock title%}
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-6">
+    <h2>Customer Registration</h2>   
+    <form class="form" action="{% url 'customerregister:validate' %}" method ="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class = "form-group">
+            <label for="customer_name">Name</label>
+            <input type="text" class="form-control" name="customer_name" id="customer_name" placeholder="Customer Name" required>
+        </div>
+                          
+        <div class = "form-group">
+            <label for="customer_address">Address </label>
+            <textarea type="text" class="form-control" name="customer_address" rows="5" cols="30" id="customer_address" placeholder="Customer's Address" required></textarea>
+        </div>
+        
+        <div class = "form-group">
+            <label for="customer_phone">Phone Number</label>
+            <input type="text" class="form-control" name="customer_phone" id="customer_phone" placeholder="Customer Phone Number" required>
+        </div>
+        
+        <div class = "form-group">
+            <label for="customer_email">E-Mail</label>
+            <input type="email" class="form-control" name="customer_email" id="customer_email" placeholder="Customer E-Mail" required>
+        </div>
+        
+        <div class = "form-group">
+            <label for="customer_username">Username</label>
+            <input type="text" class="form-control" name="customer_username" id="customer_username" placeholder="Username" required>
+            {% if error_message %} {{error_message}} {% endif %}
+            
+        </div>
+        
+        <div class = "form-group">
+            <label for="customer_password">Password</label>
+            <input type="password" class="form-control" name="customer_password" id="customer_password" placeholder="Password" required>
+        </div>
+        <div class = "form-group">
+            <label for="customer_photo">Profile Photo</label>
+            <input type="file" class="form-control" name="customer_photo" id="customer_photo" placeholder="Customer Photo" required>
+        </div>
+        <div class = "form-group">
+            <center>
+                 <input type="submit" value="Submit" name="submit">
+            </center>
+        </div>
+    </form>
+    </div> 
+</div>
+
+{% endblock content %}
